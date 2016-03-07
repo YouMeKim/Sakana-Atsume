@@ -3,13 +3,21 @@ var fishContainer;
 var itemsContainer;
 
 var costs = {
-    "toy"   : 10,
-    "squid"     : 100,
-    "bed"       : 500,
-    "heater"    : 1000,
-    "mega-fish" : 10000,
-    "what"     : 100000,
-    "test"      : 99999999999999999999
+    "leaf"              : 10,
+    "squid"             : 25,
+    "catnip"            : 50,
+    "scratching-post"   : 100,
+    "bed"               : 5000,
+    "header"            : 10000
+}
+
+var buyable = {
+    "leaf"              : false,
+    "squid"             : false,
+    "catnip"            : false,
+    "scratching-post"   : false,
+    "bed"               : false,
+    "header"            : false
 }
 
 $( document ).ready(function() {
@@ -18,11 +26,11 @@ $( document ).ready(function() {
     fishContainer = $('#money-counter');
     itemsContainer = $('#items');
 
-    $.each( costs, function (key, value) {
-        if (!localStorage.getItem(key)) {
-            localStorage.setItem(key,0);
+    $.each( costs, function (item, value) {
+        if (!localStorage.getItem(item)) {
+            localStorage.setItem(item,0);
         }
-        localStorage.setItem(key + "Buyable",false);
+        buyable[item] = false;
     });
 
     checkFish();
@@ -31,15 +39,15 @@ $( document ).ready(function() {
 function checkFish () {
 
     $.each( costs, function( item, value ) {
-        if (localStorage.getItem(item + "Buyable") == 'true' && value > fish) {
+        if (buyable[item] && value > fish) {
             console.log(item + " is no longer buyable");
-            localStorage.setItem(item + "Buyable",false);
+            buyable[item] = false;
             $('#' + item + 'Button').remove();
         }
 
-        if (localStorage.getItem(item + "Buyable") == 'false') {
+        if (!buyable[item]) {
             if (fish >= value) {
-                localStorage.setItem(item + "Buyable",'true');
+                buyable[item] = true;
                 addItem(item,value);
             }
         }
@@ -49,7 +57,8 @@ function checkFish () {
 }
 
 function addItem (item, value) {
-    itemsContainer.append("<button id='" + item + "Button' class='item' value='" + item + ":" + value + "' onclick='buyItem(this)'>" + item + "<br/>" + value + " fish</button>");
+    var itemName = item.replace("-"," ");
+    itemsContainer.append("<button id='" + item + "Button' class='item' value='" + item + ":" + value + "' onclick='buyItem(this)'>" + itemName + "<br/>" + value + " fish</button>");
 }
 
 function buyItem (button) {
