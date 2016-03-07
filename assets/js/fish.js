@@ -12,9 +12,7 @@ $( document ).ready(function() {
         fish = 0;
     }
 
-    // set incrementFish() to run every second
     incrementFish(false);
-    setInterval(incrementFish, 1000);
 });
 
 function incrementFish (bool) {
@@ -24,4 +22,6 @@ function incrementFish (bool) {
 
     fishContainer.html(fish);
     localStorage.setItem('fish',fish);
+
+    setTimeout(incrementFish, 1000);
 }
