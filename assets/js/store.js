@@ -1,4 +1,5 @@
 var fish;
+var fishContainer;
 var itemsContainer;
 
 var costs = {
@@ -12,10 +13,14 @@ var costs = {
 $( document ).ready(function() {
 
     fish = localStorage.getItem('fish');
+    fishContainer = $('#money-counter');
     itemsContainer = $('#items');
 
     $.each( costs, function (key, value) {
-        localStorage.setItem(key,false);
+        if (!localStorage.getItem(key)) {
+            localStorage.setItem(key,0);
+        }
+        localStorage.setItem(key + "Buyable",false);
     });
 
     checkFish();
@@ -24,9 +29,9 @@ $( document ).ready(function() {
 function checkFish () {
 
     $.each( costs, function( key, value ) {
-        if (localStorage.getItem(key) == 'false') {
+        if (localStorage.getItem(key + "Buyable") == 'false') {
             if (fish >= value) {
-                localStorage.setItem(key,'true');
+                localStorage.setItem(key + "Buyable",'true');
                 addItem(key,value);
             }
         }
@@ -36,5 +41,20 @@ function checkFish () {
 }
 
 function addItem (item, value) {
-    itemsContainer.append("<div class='item'>" + item + "<br/>" + value + " fish</div>");
+    itemsContainer.append("<button onclick='buyItem(this)' class='item' value='" + item + ":" + value + "'>" + item + "<br/>" + value + " fish</button>");
+}
+
+function buyItem (button) {
+    var item = button.value.split(':')[0];
+    var value = button.value.split(':')[1];
+
+    console.log("Bought " + item + " for " + value + " fish.");
+
+    fish -= value;
+    var newAmount = parseInt(localStorage.getItem(item)) + 1;
+    console.log(newAmount);
+
+    localStorage.setItem('fish',fish);
+    localStorage.setItem(item,newAmount);
+    fishContainer.html(fish);
 }
