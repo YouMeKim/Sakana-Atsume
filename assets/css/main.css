@@ -35,7 +35,7 @@ body {
 nav {
 	margin:0px auto;
 	display:inline-block;
-	color:rgba(0,0,0,0.5);
+
 	font-size:14px;
 	overflow:auto;
 }
@@ -44,11 +44,11 @@ nav {
 	float:left;
 	padding:5px 20px;
 }
-.nav-item:hover { color:rgba(0,0,0,0.6); }
-.active { color:rgba(0,0,0,0.7); }
+.active { color:rgba(0,0,0,0.8); }
 
 #content {
 	text-align:left;
+	font-size:14px;
 }
 
 footer {
@@ -61,6 +61,5 @@ footer {
 	padding:30px 0px;
 }
 
-.link {
-	cursor:pointer;
-}
+.link { color:rgba(0,0,0,0.5); cursor:pointer; }
+.link:hover { color:rgba(0,0,0,0.65); }
