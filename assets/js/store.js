@@ -27,5 +27,5 @@ function checkFish () {
         }
     });
 
-    setInterval(checkFish, 1000);
+    setTimeout(checkFish, 1000);
 }
