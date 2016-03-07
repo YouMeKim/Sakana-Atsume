@@ -27,7 +27,7 @@ var buyable = {
 $( document ).ready(function() {
 
     fish = localStorage.getItem('fish');
-    fishContainer = $('#money-counter');
+    fishContainer = $('#fish-counter');
     itemsContainer = $('#items');
 
     $.each( costs, function (item, value) {
@@ -77,7 +77,7 @@ function buyItem (button) {
 
     localStorage.setItem('fish',fish);
     localStorage.setItem(item,newAmount);
-    fishContainer.html(fish);
+    fishContainer.html(fish + " fish");
 
     checkFish();
 }

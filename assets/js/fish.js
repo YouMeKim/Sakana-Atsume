@@ -3,7 +3,7 @@ var fish;
 
 $( document ).ready(function() {
 
-    fishContainer = $('#money-counter');
+    fishContainer = $('#fish-counter');
 
     // grab fish value from local storage
     if (localStorage.getItem('fish')) {
@@ -20,7 +20,7 @@ function incrementFish (bool) {
         fish++;
     }
 
-    fishContainer.html(fish);
+    fishContainer.html(fish + " fish");
     localStorage.setItem('fish',fish);
 
     setTimeout(incrementFish, 1000);
