@@ -3,10 +3,12 @@ var fishContainer;
 var itemsContainer;
 
 var costs = {
-    "old toy"   : 10,
+    "toy"   : 10,
     "squid"     : 100,
     "bed"       : 500,
     "heater"    : 1000,
+    "mega-fish" : 10000,
+    "what"     : 100000,
     "test"      : 99999999999999999999
 }
 
@@ -28,11 +30,17 @@ $( document ).ready(function() {
 
 function checkFish () {
 
-    $.each( costs, function( key, value ) {
-        if (localStorage.getItem(key + "Buyable") == 'false') {
+    $.each( costs, function( item, value ) {
+        if (localStorage.getItem(item + "Buyable") == 'true' && value > fish) {
+            console.log(item + " is no longer buyable");
+            localStorage.setItem(item + "Buyable",false);
+            $('#' + item + 'Button').remove();
+        }
+
+        if (localStorage.getItem(item + "Buyable") == 'false') {
             if (fish >= value) {
-                localStorage.setItem(key + "Buyable",'true');
-                addItem(key,value);
+                localStorage.setItem(item + "Buyable",'true');
+                addItem(item,value);
             }
         }
     });
@@ -41,7 +49,7 @@ function checkFish () {
 }
 
 function addItem (item, value) {
-    itemsContainer.append("<button onclick='buyItem(this)' class='item' value='" + item + ":" + value + "'>" + item + "<br/>" + value + " fish</button>");
+    itemsContainer.append("<button id='" + item + "Button' class='item' value='" + item + ":" + value + "' onclick='buyItem(this)'>" + item + "<br/>" + value + " fish</button>");
 }
 
 function buyItem (button) {
@@ -57,4 +65,6 @@ function buyItem (button) {
     localStorage.setItem('fish',fish);
     localStorage.setItem(item,newAmount);
     fishContainer.html(fish);
+
+    checkFish();
 }
