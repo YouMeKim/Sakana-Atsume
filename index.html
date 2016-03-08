@@ -5,8 +5,10 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Yumi Kim">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/store.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/store.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -19,34 +21,32 @@
 			<div id="fish-counter"></div>
 		</div>
 		<nav>
-			<div id="home-link" class="nav-item link" onclick="moveTo('home');">home</div>
-			<div id="store-link" class="nav-item link" onclick="moveTo('store');">store</div>
-			<div id="fishing-link" class="nav-item link" onclick="moveTo('fishing');">fishing</div>
+			<div id="home-link" class="nav-item link" onclick="moveTo(this, 'home');">home</div>
+			<div id="store-link" class="nav-item link" onclick="moveTo(this, 'store');">store</div>
+			<div id="fishing-link" class="nav-item link" onclick="moveTo(this, 'fishing');">fishing</div>
 		</nav>
 
-	<!-- HOME -->
+		<div id="content">
 
-		<div id="index" class="section">
-			<div id="content">
+		<!-- HOME -->
+
+			<div id="home" class="section">
 				coming soon
 			</div>
-		</div>
 
-	<!-- STORE -->
+		<!-- STORE -->
 
-		<div id="store" class="section">
-			<div id="content">
+			<div id="store" class="section">
 				<h1>Buy something</h1>
 				<div id="items"></div>
 			</div>
-		</div>
 
-	<!-- FISHING -->
+		<!-- FISHING -->
 
-		<div id="fishing" class="section">
-			<div id="content">
+			<div id="fishing" class="section">
 				coming soon
 			</div>
+
 		</div>
 
 	</div>

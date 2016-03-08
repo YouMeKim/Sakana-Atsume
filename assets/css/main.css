@@ -52,6 +52,7 @@ nav {
 #content {
 	text-align:left;
 	font-size:14px;
+	min-height:500px;
 }
 
 footer {

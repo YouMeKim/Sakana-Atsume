@@ -29,8 +29,8 @@ $( document ).ready(function() {
     inventoryContainer = $('#inventory');
     fishContainer = $('#fish-counter');
 
+    moveTo($('#home-link'), 'home');
     updateInventory();
-
     incrementFish(false);
 });
 
@@ -65,4 +65,14 @@ function updateInventory () {
     } else {
         fish = 0;
     }
+}
+
+function moveTo(link, sectionName) {
+    var currentAttrValue = jQuery(this).attr('href');
+
+    $('#' + sectionName).fadeIn(300).siblings().hide();
+
+    $("#" + sectionName + "-link").addClass('active').siblings().removeClass('active');
+    $("#" + sectionName + "-link").siblings().addClass('link');
+    $("#" + sectionName + "-link").removeClass('link');
 }
