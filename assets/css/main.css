@@ -7,7 +7,7 @@ body {
 	padding:0px;
 }
 
-.wrapper {
+#wrapper {
 	position:relative;
 	width:800px;
 	margin:0px auto;
@@ -52,6 +52,12 @@ nav {
 #content {
 	text-align:left;
 	font-size:14px;
+	min-height:500px;
+}
+
+.section {
+	overflow:auto;
+	position:relative;
 }
 
 footer {
@@ -66,3 +72,4 @@ footer {
 
 .link { color:rgba(0,0,0,0.5); cursor:pointer; }
 .link:hover { color:rgba(0,0,0,0.65); }
+pre { padding:0px; margin:0px; }
