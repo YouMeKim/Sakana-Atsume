@@ -22,7 +22,6 @@ function checkFish () {
 
     $.each( costs, function( item, value ) {
         if (buyable[item] && value > fish) {
-            console.log(item + " is no longer buyable");
             buyable[item] = false;
             $('#' + item + 'Button').remove();
         }
@@ -47,11 +46,8 @@ function buyItem (button) {
     var item = button.value.split(':')[0];
     var value = button.value.split(':')[1];
 
-    console.log("Bought " + item + " for " + value + " fish.");
-
     fish -= value;
     var newAmount = parseInt(localStorage.getItem(item)) + 1;
-    console.log(newAmount);
 
     localStorage.setItem('fish',fish);
     localStorage.setItem(item,newAmount);
