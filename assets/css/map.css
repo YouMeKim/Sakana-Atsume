@@ -1,0 +1,27 @@
+/*******/
+/* MAP */
+/*******/
+
+.location {
+	float:left;
+}
+
+/*********/
+/* STORE */
+/*********/
+
+#store-content h1 { font-size:18px; }
+
+#store-content #items {
+	position:relative;
+	overflow:auto;
+}
+
+#store-content #items .item {
+	float:left;
+	padding:10px;
+	margin-right:5px;
+	text-align:center;
+	border:1px solid black;
+	cursor:pointer;
+}
