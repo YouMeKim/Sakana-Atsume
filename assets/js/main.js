@@ -29,7 +29,7 @@ $( document ).ready(function() {
     inventoryContainer = $('#inventory');
     fishContainer = $('#fish-counter');
 
-    moveTo($('#home-link'), 'home');
+    moveTo('map');
     updateInventory();
     incrementFish(false);
 });
@@ -67,12 +67,14 @@ function updateInventory () {
     }
 }
 
-function moveTo(link, sectionName) {
+function moveTo(sectionName) {
     var currentAttrValue = jQuery(this).attr('href');
+    var link = $('#' + sectionName + '-link');
 
-    $('#' + sectionName).fadeIn(300).siblings().hide();
+    $('#' + sectionName + '-content').fadeIn(300).siblings().hide();
 
-    $("#" + sectionName + "-link").addClass('active').siblings().removeClass('active');
-    $("#" + sectionName + "-link").siblings().addClass('link');
-    $("#" + sectionName + "-link").removeClass('link');
+    link.addClass('active');
+    $('#map-link').removeClass('active').siblings().removeClass('active');
+    $('#map-link').addClass('link').siblings().addClass('link');
+    link.removeClass('link');
 }

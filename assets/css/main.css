@@ -55,6 +55,11 @@ nav {
 	min-height:500px;
 }
 
+.section {
+	overflow:auto;
+	position:relative;
+}
+
 footer {
 	position:absolute;
 	bottom:0px;
@@ -67,3 +72,4 @@ footer {
 
 .link { color:rgba(0,0,0,0.5); cursor:pointer; }
 .link:hover { color:rgba(0,0,0,0.65); }
+pre { padding:0px; margin:0px; }
