@@ -1,3 +1,4 @@
+var inventoryContainer;
 var fishContainer;
 var fish;
 
@@ -25,7 +26,14 @@ var buyable = {
 
 $( document ).ready(function() {
 
+    inventoryContainer = $('#inventory');
     fishContainer = $('#fish-counter');
+
+    $.each( costs, function( item, value ) {
+        if (localStorage.getItem(item) && localStorage.getItem(item) > 0) {
+            inventoryContainer.append("<div id=" + item + "-counter>" + localStorage.getItem(item) + " " + item + "</div>");
+        }
+    });
 
     // grab fish value from local storage
     if (localStorage.getItem('fish')) {
