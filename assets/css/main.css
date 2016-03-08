@@ -7,7 +7,7 @@ body {
 	padding:0px;
 }
 
-.wrapper {
+#wrapper {
 	position:relative;
 	width:800px;
 	margin:0px auto;

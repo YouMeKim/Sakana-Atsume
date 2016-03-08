@@ -9,7 +9,7 @@
 	<script src="assets/js/main.js"></script>
 </head>
 <body>
-	<div id="index" class="wrapper">
+	<div id="wrapper">
 		<div id="header">
 			<h1>&#62;&#176;))))彡</h1>
 			<h1>Sakana Atsume</h1>
@@ -19,13 +19,36 @@
 			<div id="fish-counter"></div>
 		</div>
 		<nav>
-			<div class="nav-item active">home</div>
-			<a href="store.html"><div class="nav-item link">store</div></a>
-			<a href="fishing.html"><div class="nav-item link">fishing</div></a>
+			<div id="home-link" class="nav-item link" onclick="moveTo('home');">home</div>
+			<div id="store-link" class="nav-item link" onclick="moveTo('store');">store</div>
+			<div id="fishing-link" class="nav-item link" onclick="moveTo('fishing');">fishing</div>
 		</nav>
-		<div id="content">
-			coming soon
+
+	<!-- HOME -->
+
+		<div id="index" class="section">
+			<div id="content">
+				coming soon
+			</div>
 		</div>
+
+	<!-- STORE -->
+
+		<div id="store" class="section">
+			<div id="content">
+				<h1>Buy something</h1>
+				<div id="items"></div>
+			</div>
+		</div>
+
+	<!-- FISHING -->
+
+		<div id="fishing" class="section">
+			<div id="content">
+				coming soon
+			</div>
+		</div>
+
 	</div>
 	<footer>
 		&copy; Yumi Kim 2016
