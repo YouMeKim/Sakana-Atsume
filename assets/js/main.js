@@ -29,18 +29,7 @@ $( document ).ready(function() {
     inventoryContainer = $('#inventory');
     fishContainer = $('#fish-counter');
 
-    $.each( costs, function( item, value ) {
-        if (localStorage.getItem(item) && localStorage.getItem(item) > 0) {
-            inventoryContainer.append("<div id=" + item + "-counter>" + localStorage.getItem(item) + " " + item + "</div>");
-        }
-    });
-
-    // grab fish value from local storage
-    if (localStorage.getItem('fish')) {
-        fish = localStorage.getItem('fish');
-    } else {
-        fish = 0;
-    }
+    updateInventory();
 
     incrementFish(false);
 });
@@ -54,4 +43,26 @@ function incrementFish (bool) {
     localStorage.setItem('fish',fish);
 
     setTimeout(incrementFish, 1000);
+}
+
+function updateInventory () {
+    fishContainer.html(fish + " fish");
+
+    $.each( costs, function(item, value) {
+        if (localStorage.getItem(item) && localStorage.getItem(item) > 0) {
+            if (document.getElementById(item + "-counter")) {
+                var container = $("#" + item + "-counter");
+                container.html(localStorage.getItem(item) + " " + item);
+            } else {
+                inventoryContainer.append("<div id=" + item + "-counter>" + localStorage.getItem(item) + " " + item + "</div>");
+            }
+        }
+    });
+
+    // grab fish value from local storage
+    if (localStorage.getItem('fish')) {
+        fish = localStorage.getItem('fish');
+    } else {
+        fish = 0;
+    }
 }

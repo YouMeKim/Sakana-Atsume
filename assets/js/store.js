@@ -58,4 +58,5 @@ function buyItem (button) {
     fishContainer.html(fish + " fish");
 
     checkFish();
+    updateInventory();
 }
