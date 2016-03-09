@@ -2,28 +2,6 @@ var inventoryContainer;
 var fishContainer;
 var fish;
 
-var costs = {
-    "leaf"              : 5,
-    "bait"              : 10,
-    "squid"             : 25,
-    "catnip"            : 50,
-    "fishing-rod"       : 100,
-    "scratching-post"   : 200,
-    "bed"               : 5000,
-    "header"            : 10000
-}
-
-var buyable = {
-    "leaf"              : false,
-    "bait"              : false,
-    "squid"             : false,
-    "catnip"            : false,
-    "fishing-rod"       : false,
-    "scratching-post"   : false,
-    "bed"               : false,
-    "header"            : false
-}
-
 $( document ).ready(function() {
 
     inventoryContainer = $('#inventory');
@@ -48,13 +26,15 @@ function incrementFish (bool) {
 function updateInventory () {
     fishContainer.html(fish + " fish");
 
-    $.each( costs, function(item, value) {
-        if (localStorage.getItem(item) && localStorage.getItem(item) > 0) {
-            if (document.getElementById(item + "-counter")) {
-                var container = $("#" + item + "-counter");
-                container.html(localStorage.getItem(item) + " " + item);
+    $.each( items, function(index) {
+        var item = items[index];
+        var name = item.name;
+        if (localStorage.getItem(name) && localStorage.getItem(name) > 0) {
+            if (document.getElementById(name + "-counter")) {
+                var container = $("#" + name + "-counter");
+                container.html(localStorage.getItem(name) + " " + name);
             } else {
-                inventoryContainer.append("<div id=" + item + "-counter>" + localStorage.getItem(item) + " " + item + "</div>");
+                inventoryContainer.append("<div id=" + name + "-counter>" + localStorage.getItem(name) + " " + name + "</div>");
             }
         }
     });

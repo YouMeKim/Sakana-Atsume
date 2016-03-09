@@ -8,11 +8,12 @@ $( document ).ready(function() {
     fishContainer = $('#fish-counter');
     itemsContainer = $('#items');
 
-    $.each( costs, function (item, value) {
-        if (!localStorage.getItem(item)) {
-            localStorage.setItem(item,0);
+    $.each( items, function ( index ) {
+        var item = items[index];
+        if (!localStorage.getItem(item.name)) {
+            localStorage.setItem(item.name,0);
         }
-        buyable[item] = false;
+        item.buyable = false;
     });
 
     checkFish();
@@ -20,16 +21,17 @@ $( document ).ready(function() {
 
 function checkFish () {
 
-    $.each( costs, function( item, value ) {
-        if (buyable[item] && value > fish) {
-            buyable[item] = false;
-            $('#' + item + 'Button').remove();
+    $.each( items, function( index ) {
+        var item = items[index];
+        if (item.buyable && item.cost > fish) {
+            item.buyable = false;
+            $('#' + item.name + 'Button').remove();
         }
 
-        if (!buyable[item]) {
-            if (fish >= value) {
-                buyable[item] = true;
-                addItem(item,value);
+        if (!item.buyable) {
+            if (fish >= item.cost) {
+                item.buyable = true;
+                addItem(item.name,item.cost);
             }
         }
     });
@@ -37,9 +39,10 @@ function checkFish () {
     setTimeout(checkFish, 1000);
 }
 
-function addItem (item, value) {
-    var itemName = item.replace("-"," ");
-    itemsContainer.append("<button id='" + item + "Button' class='item' value='" + item + ":" + value + "' onclick='buyItem(this)'>" + itemName + "<br/>" + value + " fish</button>");
+function addItem (name, cost) {
+
+    var itemName = name.replace("-"," ");
+    itemsContainer.append("<button id='" + name + "Button' class='item' value='" + itemName + ":" + cost + "' onclick='buyItem(this)'>" + itemName + "<br/>" + cost + " fish</button>");
 }
 
 function buyItem (button) {
