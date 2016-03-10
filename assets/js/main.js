@@ -57,4 +57,13 @@ function moveTo(sectionName) {
     $('#map-link').removeClass('active').siblings().removeClass('active');
     $('#map-link').addClass('link').siblings().addClass('link');
     link.removeClass('link');
+
+    // add specific actions for certain sections
+    switch(sectionName) {
+        case "inventory":
+            showInventory();
+            return;
+        default:
+            return;
+    }
 }

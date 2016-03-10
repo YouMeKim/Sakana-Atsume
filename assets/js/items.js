@@ -15,3 +15,7 @@ function item(n,c) {
     this.cost = c;
     this.buyable = false;
 }
+
+function showInventory() {
+    console.log("inventory");
+}
