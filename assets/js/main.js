@@ -27,19 +27,6 @@ function incrementFish (bool) {
 function updateStats () {
     fishContainer.html(fish + " fish");
 
-    $.each( items, function(index) {
-        var item = items[index];
-        var name = item.name;
-        if (localStorage.getItem(name) && localStorage.getItem(name) > 0) {
-            if (document.getElementById(name + "-counter")) {
-                var container = $("#" + name + "-counter");
-                container.html(localStorage.getItem(name) + " " + name);
-            } else {
-                statsContainer.append("<div id=" + name + "-counter>" + localStorage.getItem(name) + " " + name + "</div>");
-            }
-        }
-    });
-
     // grab fish value from local storage
     if (localStorage.getItem('fish')) {
         fish = localStorage.getItem('fish');

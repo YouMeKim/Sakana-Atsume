@@ -20,13 +20,15 @@ function item(n,c,a) {
 function showInventory() {
     var inventory = $('#inventory-content');
 
+    inventory.empty();
+
+    var options = "<select><option></option><option value='trash'>throw out</option><option value='eat'>eat</value></select>";
+
     $.each( items, function( index ) {
         var item = items[index];
         var name = item.name;
         if (localStorage.getItem(name) && localStorage.getItem(name) > 0) {
-            inventory.append("<div id='" + name + "' class='inventory-item'><pre>" + item.ascii + "</pre></div>");
+            inventory.append("<div id='" + name + "-inventory' class='inventory-item'><pre>" + item.ascii + "</pre><hr><strong>qty:</strong> " + localStorage.getItem(name) + "<br>" + options + "</div>");
         }
     });
-
-    console.log("inventory");
 }
