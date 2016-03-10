@@ -29,8 +29,9 @@ function showInventory() {
     $.each( items, function( index ) {
         var item = items[index];
         var name = item.name;
+        var itemName = name.replace("-"," ");
         if (localStorage.getItem(name) && localStorage.getItem(name) > 0) {
-            inventory.append("<div id='" + name + "-inventory' class='inventory-item'><pre>" + item.ascii + "</pre><hr>qty: " + localStorage.getItem(name) + "<br>" + options + "</div>");
+            inventory.append("<div id='" + name + "-inventory' class='inventory-item'><pre>" + item.ascii + "</pre><hr>" + itemName + "<br>qty: " + localStorage.getItem(name) + "<br>" + options + "</div>");
         }
     });
 }
