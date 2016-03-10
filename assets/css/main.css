@@ -25,7 +25,7 @@ body {
 #header h1 { text-align:center; font-size:18px; color:rgba(0,0,0,1); margin:0px; padding:0px; }
 #header h2 { text-align:center; font-size:12px; color:rgba(0,0,0,0.5); margin:0px; padding:0px; }
 
-#inventory {
+#stats {
 	position:absolute;
 	padding:5px;
 	font-size:14px;

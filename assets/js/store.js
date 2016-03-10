@@ -40,9 +40,8 @@ function checkFish () {
 }
 
 function addItem (name, cost) {
-
     var itemName = name.replace("-"," ");
-    itemsContainer.append("<button id='" + name + "Button' class='item' value='" + itemName + ":" + cost + "' onclick='buyItem(this)'>" + itemName + "<br/>" + cost + " fish</button>");
+    itemsContainer.append("<button id='" + name + "Button' class='item' value='" + name + ":" + cost + "' onclick='buyItem(this)'>" + itemName + "<br/>" + cost + " fish</button>");
 }
 
 function buyItem (button) {
@@ -57,5 +56,5 @@ function buyItem (button) {
     fishContainer.html(fish + " fish");
 
     checkFish();
-    updateInventory();
+    updateStats();
 }

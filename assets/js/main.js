@@ -1,14 +1,15 @@
-var inventoryContainer;
+var statsContainer;
 var fishContainer;
 var fish;
 
 $( document ).ready(function() {
 
-    inventoryContainer = $('#inventory');
+    statsContainer = $('#stats');
     fishContainer = $('#fish-counter');
 
-    moveTo('map');
-    updateInventory();
+    //moveTo('map');
+    moveTo('inventory');
+    updateStats();
     incrementFish(false);
 });
 
@@ -23,7 +24,7 @@ function incrementFish (bool) {
     setTimeout(incrementFish, 1000);
 }
 
-function updateInventory () {
+function updateStats () {
     fishContainer.html(fish + " fish");
 
     $.each( items, function(index) {
@@ -34,7 +35,7 @@ function updateInventory () {
                 var container = $("#" + name + "-counter");
                 container.html(localStorage.getItem(name) + " " + name);
             } else {
-                inventoryContainer.append("<div id=" + name + "-counter>" + localStorage.getItem(name) + " " + name + "</div>");
+                statsContainer.append("<div id=" + name + "-counter>" + localStorage.getItem(name) + " " + name + "</div>");
             }
         }
     });
