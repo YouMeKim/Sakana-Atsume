@@ -41,7 +41,4 @@
 	margin:0px 23px 23px 0px;
 	border:1px solid black;
 }
-#inventory-content .inventory-item:nth-child(5n) {
-	border-color:red;
-	margin-right:0px;
-}
+#inventory-content .inventory-item:nth-child(5n) { margin-right:0px; }
