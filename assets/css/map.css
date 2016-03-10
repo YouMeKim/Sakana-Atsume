@@ -25,3 +25,23 @@
 	border:1px solid black;
 	cursor:pointer;
 }
+
+/*************/
+/* INVENTORY */
+/*************/
+
+#inventory-content {
+	overflow:auto;
+	position:relative;
+}
+
+#inventory-content .inventory-item {
+	float:left;
+	width:109px;
+	padding:15px;
+	margin:0px 23px 23px 0px;
+	font-size:12px;
+	border:1px solid black;
+}
+#inventory-content .inventory-item:nth-child(5n) { margin-right:0px; }
+#inventory-content .inventory-item pre { font-size:14px; }

@@ -1,36 +1,15 @@
-var inventoryContainer;
+var statsContainer;
 var fishContainer;
 var fish;
 
-var costs = {
-    "leaf"              : 5,
-    "bait"              : 10,
-    "squid"             : 25,
-    "catnip"            : 50,
-    "fishing-rod"       : 100,
-    "scratching-post"   : 200,
-    "bed"               : 5000,
-    "header"            : 10000
-}
-
-var buyable = {
-    "leaf"              : false,
-    "bait"              : false,
-    "squid"             : false,
-    "catnip"            : false,
-    "fishing-rod"       : false,
-    "scratching-post"   : false,
-    "bed"               : false,
-    "header"            : false
-}
-
 $( document ).ready(function() {
 
-    inventoryContainer = $('#inventory');
+    statsContainer = $('#stats');
     fishContainer = $('#fish-counter');
 
-    moveTo('map');
-    updateInventory();
+    //moveTo('map');
+    moveTo('inventory');
+    updateStats();
     incrementFish(false);
 });
 
@@ -45,19 +24,8 @@ function incrementFish (bool) {
     setTimeout(incrementFish, 1000);
 }
 
-function updateInventory () {
+function updateStats () {
     fishContainer.html(fish + " fish");
-
-    $.each( costs, function(item, value) {
-        if (localStorage.getItem(item) && localStorage.getItem(item) > 0) {
-            if (document.getElementById(item + "-counter")) {
-                var container = $("#" + item + "-counter");
-                container.html(localStorage.getItem(item) + " " + item);
-            } else {
-                inventoryContainer.append("<div id=" + item + "-counter>" + localStorage.getItem(item) + " " + item + "</div>");
-            }
-        }
-    });
 
     // grab fish value from local storage
     if (localStorage.getItem('fish')) {
@@ -77,4 +45,13 @@ function moveTo(sectionName) {
     $('#map-link').removeClass('active').siblings().removeClass('active');
     $('#map-link').addClass('link').siblings().addClass('link');
     link.removeClass('link');
+
+    // add specific actions for certain sections
+    switch(sectionName) {
+        case "inventory":
+            showInventory();
+            return;
+        default:
+            return;
+    }
 }
